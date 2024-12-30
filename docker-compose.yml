@@ -1,0 +1,30 @@
+services:
+  mc:
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+      - "8100:8100" # Bluemap
+      - "19132:19132/udp" # Bedrock
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      PAPER_CHANNEL: "experimental"
+      VERSION: "1.21.4"
+      MOTD: "Mame craft"
+      DIFFICULTY: "easy"
+      ICON: "https://pbs.twimg.com/profile_images/1517715992469970945/_66xagxr_400x400.jpg"
+      MAX_PLAYERS: "20"
+      ANNOUCE_PLAYER_ACHIEVEMENTS: "true"
+      FORCE_GAMEMODE: "true"
+      VIEW_DISTANCE: "30"
+      MODE: "survival"
+      ONLINE_MODE: "true"
+      MEMORY: "16G"
+    restart: "always"
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      - ./data:/data
+
+
